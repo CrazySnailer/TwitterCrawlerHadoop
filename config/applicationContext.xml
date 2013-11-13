@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+         http://www.springframework.org/schema/tx  
+         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	
+	<context:component-scan base-package="isiteam.TwitterCrawler.*" />
+	<context:annotation-config />
+
+
+	<!--获取jdbc配置文件 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>config/jdbc.properties</value>
+		</property>
+	</bean>
+	
+	
+	 <!-- 配置数据库连接taiwang2 -->
+	 
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}">
+		</property>
+		<property name="url" value="${jdbc.url}">
+		</property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!-- #最大连接数据库连接数,设 0 为没有限制 -->
+		<property name="maxActive">
+			<value>50</value>
+		</property>
+		<!-- #最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止。设 0 为没有限制  -->
+		<property name="maxIdle">
+			<value>20</value>
+		</property>
+		<!-- 最大等待毫秒数, 单位为 ms, 超过时间会出错误信息 -->
+		<property name="maxWait">
+			<value>1000</value>
+		</property>
+		<property name="defaultAutoCommit">
+			<value>false</value>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>isiteam.TwitterCrawler.database.bean</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+			<value>
+				isiteam.TwitterCrawler.database.bean.UserInfo
+			</value>
+			<value>
+				isiteam.TwitterCrawler.database.bean.SeedsQueue
+			</value>
+			<value>
+				isiteam.TwitterCrawler.database.bean.TweetInfo
+			</value>
+			<value>
+				isiteam.TwitterCrawler.database.bean.UserFriends
+			</value></list>
+		</property></bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	
+
+<!-- 配置事务管理器 --> 
+ <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  <property name="sessionFactory">
+       <ref bean="sessionFactory"/>
+  </property>
+ </bean>
+
+ <!-- 配置事务的传播特性 -->
+ <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+     <tx:method name="add*" propagation="REQUIRED"/>
+     <tx:method name="delete*" propagation="REQUIRED"/>
+     <tx:method name="update*" propagation="REQUIRED"/>
+     <tx:method name="save*" propagation="REQUIRED"/>
+     <tx:method name="get*" propagation="REQUIRED"/>
+     <tx:method name="batch*" propagation="REQUIRED"/>     
+     <tx:method name="*" read-only="true"/>
+    </tx:attributes>
+ </tx:advice>
+
+ 
+ <!-- 那些类的哪些方法参与事务 -->
+ <!-- 
+		定义哪些方法参与事务
+		expression="execution(* com.tree.*.service.*.*(..))
+		第一个*代表 返回值类型是所有。
+		com.tree.*.service 代表在这个包下的类，第二个*代表中间模糊匹配。
+		第三个* 代表类的名称是所有类。
+		第四个* 代表类中的方法名称。
+		(..)代表参数不限制。
+	 -->
+ 
+ <aop:config>
+    <aop:pointcut id="allManagerMethod" expression="execution(* isiteam.TwitterCrawler.database.dao.impl.*.*(..))"/>
+    <aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
+ </aop:config>
+
+ </beans>

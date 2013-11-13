@@ -1,0 +1,1 @@
+java -jar -Xmx1024m TwitterNLP-1.0-SNAPSHOT.jar

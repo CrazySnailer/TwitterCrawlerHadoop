@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Built-By: CrazySnailer
+Build-Jdk: 1.6.0_13
+Class-Path: lib/twitter4j-async-3.0.3.jar lib/twitter4j-stream-3.0.3.j
+ ar lib/twitter4j-core-3.0.3.jar lib/commons-logging-1.1.1.jar lib/log
+ 4j-1.2.17.jar lib/slf4j-log4j12-1.5.2.jar lib/slf4j-api-1.5.2.jar lib
+ /spring-aop-3.2.3.RELEASE.jar lib/aopalliance-1.0.jar lib/spring-bean
+ s-3.2.3.RELEASE.jar lib/spring-context-3.2.3.RELEASE.jar lib/spring-c
+ ore-3.2.3.RELEASE.jar lib/spring-expression-3.2.3.RELEASE.jar lib/spr
+ ing-jdbc-3.2.3.RELEASE.jar lib/spring-orm-3.2.3.RELEASE.jar lib/sprin
+ g-tx-3.2.3.RELEASE.jar lib/cglib-2.2.jar lib/asm-3.1.jar lib/aspectjr
+ t-1.6.11.jar lib/aspectjweaver-1.6.11.jar lib/mysql-connector-java-5.
+ 1.25.jar lib/hibernate-annotations-3.3.1.GA.jar lib/hibernate-3.2.6.g
+ a.jar lib/ehcache-1.2.3.jar lib/asm-attrs-1.5.3.jar lib/hibernate-com
+ mons-annotations-3.0.0.ga.jar lib/ejb3-persistence-1.0.1.GA.jar lib/h
+ ibernate-entitymanager-3.3.1.GA.jar lib/persistence-api-1.0.jar lib/h
+ ibernate-validator-3.0.0.ga.jar lib/javassist-3.3.GA.jar lib/jboss-co
+ mmon-core-2.0.4.GA.jar lib/hibernate-core-3.3.1.GA.jar lib/antlr-2.7.
+ 6.jar lib/commons-collections-3.1.jar lib/dom4j-1.6.1.jar lib/xml-api
+ s-1.0.b2.jar lib/jta-1.1.jar lib/commons-dbcp-1.4.jar lib/commons-poo
+ l-1.5.4.jar lib/maven-assembly-plugin-2.2-beta-5.jar lib/maven-common
+ -artifact-filters-1.1.jar lib/maven-plugin-testing-harness-1.1.jar li
+ b/plexus-interpolation-1.7.jar lib/plexus-archiver-1.0-alpha-12.jar l
+ ib/file-management-1.1.jar lib/maven-shared-io-1.1.jar lib/maven-arti
+ fact-manager-2.0.2.jar lib/maven-repository-metadata-2.0.2.jar lib/wa
+ gon-provider-api-1.0-alpha-6.jar lib/maven-filtering-1.0-beta-2.jar l
+ ib/maven-core-2.0.6.jar lib/wagon-file-1.0-beta-2.jar lib/maven-plugi
+ n-parameter-documenter-2.0.6.jar lib/wagon-http-lightweight-1.0-beta-
+ 2.jar lib/wagon-http-shared-1.0-beta-2.jar lib/jtidy-4aug2000r7-dev.j
+ ar lib/maven-reporting-api-2.0.6.jar lib/doxia-sink-api-1.0-alpha-7.j
+ ar lib/maven-error-diagnostics-2.0.6.jar lib/commons-cli-1.0.jar lib/
+ wagon-ssh-external-1.0-beta-2.jar lib/wagon-ssh-common-1.0-beta-2.jar
+  lib/maven-plugin-descriptor-2.0.6.jar lib/plexus-interactivity-api-1
+ .0-alpha-4.jar lib/wagon-ssh-1.0-beta-2.jar lib/jsch-0.1.27.jar lib/m
+ aven-monitor-2.0.6.jar lib/maven-settings-2.0.6.jar lib/plexus-active
+ -collections-1.0-beta-2.jar lib/plexus-io-1.0-alpha-4.jar lib/maven-p
+ lugin-api-2.0.4.jar lib/maven-project-2.0.4.jar lib/maven-profile-2.0
+ .4.jar lib/maven-archiver-2.4.jar lib/plexus-container-default-1.0-al
+ pha-9-stable-1.jar lib/classworlds-1.1-alpha-2.jar lib/plexus-utils-2
+ .0.1.jar lib/maven-artifact-2.0.4.jar lib/maven-model-2.0.4.jar lib/m
+ aven-repository-builder-1.0-alpha-2.jar
+Main-Class: isiteam.TwitterCrawler.mainApp.UserInfoDetailsCrawler
+Created-By: Maven Integration for Eclipse
+

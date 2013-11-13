@@ -1,0 +1,281 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.isiteam.crawler</groupId>
+  <artifactId>TwitterCrawler</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>TwitterCrawler</name>
+  <url>http://maven.apache.org</url>
+
+   <developers>
+        <developer>
+            <id>Dayong.shen</id>
+            <name>CrazySnailer</name>
+            <email>dayong.shen@gmail.com</email>
+            <url>http://weibo.com/stdayong</url>
+            <roles>
+                <role>lead</role>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+  
+	        <!-- 设置变量:用于统一管理Library的版本 -->
+	        <jdk.version>1.6</jdk.version>	    
+	        <junit.version>4.11</junit.version>
+	        <log4j.version>1.2.17</log4j.version>
+	        <org.aspectj.version>1.6.11</org.aspectj.version>	     
+	        <org.slf4j.version>1.5.2</org.slf4j.version>
+	        <mysql.jdbc.version>5.1.25</mysql.jdbc.version>
+	        <org.hibernate.version>3.3.1.GA</org.hibernate.version>
+	        <org.springframework.version>3.2.3.RELEASE</org.springframework.version>	  
+	        <commons.logging.version>1.1.1</commons.logging.version>
+	        <org.twitter4j.version>3.0.3</org.twitter4j.version>
+	        <cglib.version>2.2</cglib.version>
+	        <commons.dbcp.version>1.4</commons.dbcp.version>
+	        <org.apache.maven.plugins.version>2.2-beta-5</org.apache.maven.plugins.version>
+
+  </properties>
+
+  <dependencies>  		
+    <dependency>
+        <groupId>org.twitter4j</groupId>
+        <artifactId>twitter4j-async</artifactId>
+        <version>${org.twitter4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.twitter4j</groupId>
+        <artifactId>twitter4j-stream</artifactId>
+        <version>${org.twitter4j.version}</version>
+    </dependency>   
+    <dependency>
+    	<groupId>org.twitter4j</groupId>
+    	<artifactId>twitter4j-core</artifactId>
+    	<version>${org.twitter4j.version}</version>
+    </dependency>
+   
+    
+    <!-- JUnit testing framework -->
+    <dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>    
+    <dependency>
+    	<groupId>commons-logging</groupId>
+    	<artifactId>commons-logging</artifactId>
+    	<version>${commons.logging.version}</version>
+    </dependency>
+
+
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>${log4j.version}</version>
+    	<scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-log4j12</artifactId>
+	<version>${org.slf4j.version}</version>
+   </dependency>
+    
+<!-- spring framework -->
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${org.springframework.version}</version>
+	        </dependency>
+	 
+            <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-beans</artifactId>
+            <version>${org.springframework.version}</version>	        
+            </dependency>
+	 
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-context</artifactId>
+	            <version>${org.springframework.version}</version>
+	        </dependency>
+	 
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-core</artifactId>
+	            <version>${org.springframework.version}</version>
+	        </dependency>
+	 
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-expression</artifactId>
+	            <version>${org.springframework.version}</version>
+	        </dependency>
+
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-jdbc</artifactId>
+	            <version>${org.springframework.version}</version>
+	        </dependency>
+	 
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-orm</artifactId>
+	            <version>${org.springframework.version}</version>
+        </dependency>
+	 
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-tx</artifactId>
+           <version>${org.springframework.version}</version>
+	        </dependency>
+	 
+	    
+	        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+	            <version>${org.springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+    <!-- Spring AOP dependency -->
+    
+    <dependency>
+    	<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>${cglib.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>${org.aspectj.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${org.aspectj.version}</version>
+	</dependency>
+	
+  <!-- MySQL database driver -->
+  <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>${mysql.jdbc.version}</version>
+    </dependency>
+    
+   <!-- Hibernate framework -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-annotations</artifactId>
+		<version>${org.hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${org.hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${org.hibernate.version}</version>
+	</dependency>
+
+	
+	<!-- Hibernate library dependecy start -->
+	
+	
+	<dependency>
+	   <groupId>commons-dbcp</groupId>
+	   <artifactId>commons-dbcp</artifactId>
+       <version>${commons.dbcp.version}</version>
+    </dependency>
+    
+    <!-- Hibernate library dependecy end -->
+    
+	<dependency>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>${org.apache.maven.plugins.version}</version>
+		<type>maven-plugin</type>
+	</dependency>
+	
+  </dependencies>
+  
+	<build>
+	  <plugins>
+	  
+	  
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.2</version>
+			<configuration>
+				<source>${jdk.version}</source>
+				<target>${jdk.version}</target>
+			</configuration>
+		</plugin>
+		
+		
+		        <!-- The configuration of maven-jar-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <!-- The configuration of the plugin -->
+                <configuration>
+                    <!-- Configuration of the archiver -->
+                    <archive>
+                        <!-- Manifest specific configuration -->
+                        <manifest>
+                            <!-- Classpath is added to the manifest of the created jar file. -->
+                            <addClasspath>true</addClasspath>
+                            <!--
+                               Configures the classpath prefix. This configuration option is
+                               used to specify that all needed libraries are found under lib/
+                               directory.
+                           -->
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- Specifies the main class of the application -->
+                            <mainClass>isiteam.TwitterCrawler.mainApp.UserInfoDetailsCrawler</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+		
+		
+
+  
+</plugins>
+</build> 	
+	
+	
+	  
+ <repositories>
+   
+    <repository>
+        <id>JBoss</id>
+        <name>The "public-jboss" repository group provides a combined view all JBoss community project artifacts</name>
+        <layout>default</layout>
+        <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
+	</repository>
+    
+    <repository>  
+        <id>java</id>  
+        <name>java official repository</name>  
+        <url>http://download.java.net/maven/2/</url>  
+    </repository> 
+    
+</repositories>
+	
+</project>
